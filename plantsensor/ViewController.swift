@@ -23,7 +23,7 @@ class ViewController: UIViewController {
     @objc private func UIScreenBrightnessDidChange(notification: NSNotification) {
         let brightnessFloatValue = Float(UIScreen.main.brightness)
         let brightnessPercentValue = brightnessFloatValue * 100
-        brightnessTextLabel.text = "Brightness level: " + String(brightnessPercentValue) + "%"
+        brightnessTextLabel.text = String(format: "Brightness level: %.1f %", brightnessPercentValue)
         brightnessProgressView.progress = brightnessFloatValue
     }
 
