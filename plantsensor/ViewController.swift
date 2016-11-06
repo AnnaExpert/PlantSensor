@@ -25,7 +25,7 @@ class ViewController: UIViewController {
     @objc private func UIScreenBrightnessDidChange(notification: NSNotification) {
         let brightnessFloatValue = Float(UIScreen.main.brightness)
         let brightnessPercentValue = brightnessFloatValue * 100
-        brightnessTextLabel.text = String(format: "Brightness level: %.1f %", brightnessPercentValue)
+        brightnessTextLabel.text = String(format: "Brightness level: %.1f", brightnessPercentValue) + "%"
         brightnessProgressView.progress = brightnessFloatValue
     }
 
@@ -35,67 +35,26 @@ class ViewController: UIViewController {
     }
     
     @IBAction func brightnessCheckButton(_ sender: UIButton) {
-        NotificationCenter.default.post(name: Notification.Name.UIScreenBrightnessDidChange, object: nil)
         let brightnessFloatValue = Float(UIScreen.main.brightness)
         let brightnessPercentValue = brightnessFloatValue * 100
-        brightnessManualTextLabel.text = String(format: "%.1f" + " %", brightnessPercentValue)
-
+        brightnessManualTextLabel.text = String(format: "%.1f", brightnessPercentValue) + "%"
     }
     
     @IBAction func setMaxBrightnessButton(_ sender: UIButton) {
         UIScreen.main.brightness = CGFloat(1)
-        brightnessTextLabel.text = "Brightness level: Maximum"
+//        brightnessTextLabel.text = "Brightness level: Maximum"
+        NotificationCenter.default.post(name: Notification.Name.UIScreenBrightnessDidChange, object: nil)
+    }
+    
+    @IBAction func setAvgBrightnessButton(_ sender: UIButton) {
+        UIScreen.main.brightness = CGFloat(0.5)
+//        brightnessTextLabel.text = "Brightness level: Average"
+        NotificationCenter.default.post(name: Notification.Name.UIScreenBrightnessDidChange, object: nil)
     }
     
     @IBAction func setMinBrightnessButton(_ sender: UIButton) {
         UIScreen.main.brightness = CGFloat(0)
-        brightnessTextLabel.text = "Brightness level: Minimum"
+//        brightnessTextLabel.text = "Brightness level: Minimum"
+        NotificationCenter.default.post(name: Notification.Name.UIScreenBrightnessDidChange, object: nil)
     }
 }
-
-/*
-Swift 3.0 in Xcode 8
-
-Swift 3.0 has replaced many "stringly-typed" APIs with struct "wrapper types", as is the case with NotificationCenter. Notifications are now identified by a struct Notfication.Name rather than by String. See the Migrating to Swift 3 guide.
-
-Previous usage:
-
-// Define identifier
-let notificationIdentifier: String = "NotificationIdentifier"
-
-// Register to receive notification
-NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(YourClassName.methodOfReceivedNotification(_:)), name: notificationIdentifier, object: nil)
-
-// Post a notification
-NSNotificationCenter.defaultCenter().postNotificationName(notificationIdentifier, object: nil)
-
- 
- 
- New Swift 3.0 usage:
-
-// Define identifier
-let notificationName = Notification.Name("NotificationIdentifier")
-
-// Register to receive notification
-NotificationCenter.default.addObserver(self, selector: #selector(YourClassName.methodOfReceivedNotification), name: notificationName, object: nil)
-
-// Post notification
-NotificationCenter.default.post(name: notificationName, object: nil)
-All of the system notification types are now defined as static constants on Notification.Name; i.e. .UIDeviceBatteryLevelDidChange, .UIApplicationDidFinishLaunching, .UITextFieldTextDidChange, etc.
-
-You can extend Notification.Name with your own custom notifications in order to stay consistent with the system notifications:
-
-// Definition:
-extension Notification.Name {
-    static let yourCustomNotificationName = Notification.Name("yourCustomNotificationName")
-}
-
-// Usage:
-NotificationCenter.default.post(name: .yourCustomNotificationName, object: nil)
-
-
-
-
-
-
-*/
