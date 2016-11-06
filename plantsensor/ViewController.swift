@@ -30,6 +30,8 @@ class ViewController: UIViewController {
     }
     
     func UIScreenBrightnessDidChange(notification: NSNotification) {
+        self.loadActivityIndicator.stopAnimating()
+        brightnessProgressView.isHidden = false
         let brightnessFloatValue = Float(UIScreen.main.brightness)
         let brightnessPercentValue = brightnessFloatValue * 100
         brightnessTextLabel.text = String(format: "Brightness level: %.1f", brightnessPercentValue) + "%"
@@ -44,7 +46,7 @@ class ViewController: UIViewController {
         let brightnessFloatValue = Float(UIScreen.main.brightness)
         let brightnessPercentValue = brightnessFloatValue * 100
         brightnessManualTextLabel.text = String(format: "%.1f", brightnessPercentValue) + "%"
-        brightnessManualTextLabel.isEnabled = true
+        brightnessManualTextLabel.isHidden = false
     }
     
     @IBAction func setMaxBrightnessButton(_ sender: UIButton) {
