@@ -12,12 +12,14 @@ import NotificationCenter
 class ViewController: UIViewController {
     
     @IBOutlet weak var brightnessTextLabel: UILabel!
+    @IBOutlet weak var brightnessManualTextLabel: UILabel!
     @IBOutlet weak var brightnessProgressView: UIProgressView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         NotificationCenter.default.addObserver(self, selector: #selector(self.UIScreenBrightnessDidChange), name: Notification.Name.UIScreenBrightnessDidChange, object: nil)
+        NotificationCenter.default.post(name: Notification.Name.UIScreenBrightnessDidChange, object: nil)
     }
     
     @objc private func UIScreenBrightnessDidChange(notification: NSNotification) {
@@ -34,6 +36,20 @@ class ViewController: UIViewController {
     
     @IBAction func brightnessCheckButton(_ sender: UIButton) {
         NotificationCenter.default.post(name: Notification.Name.UIScreenBrightnessDidChange, object: nil)
+        let brightnessFloatValue = Float(UIScreen.main.brightness)
+        let brightnessPercentValue = brightnessFloatValue * 100
+        brightnessManualTextLabel.text = String(format: "%.1f %", brightnessPercentValue)
+
+    }
+    
+    @IBAction func setMaxBrightnessButton(_ sender: UIButton) {
+        UIScreen.main.brightness = CGFloat(1)
+        brightnessManualTextLabel.text = "Brightness level: MAX"
+    }
+    
+    @IBAction func setMinBrightnessButton(_ sender: UIButton) {
+        UIScreen.main.brightness = CGFloat(0)
+        brightnessManualTextLabel.text = "Brightness level: MIN"
     }
 }
 
