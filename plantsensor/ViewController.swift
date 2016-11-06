@@ -10,8 +10,9 @@ import UIKit
 import NotificationCenter
 
 class ViewController: UIViewController {
-
-    @IBOutlet weak var textView: UITextView!
+    
+    @IBOutlet weak var brightnessTextLabel: UILabel!
+    @IBOutlet weak var brightnessProgressView: UIProgressView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,20 +21,14 @@ class ViewController: UIViewController {
     }
     
     @objc private func UIScreenBrightnessDidChange(notification: NSNotification) {
-        let brightnessValue = Float(UIScreen.main.brightness)
-        print(brightnessValue)
+        let brightnessFloatValue = Float(UIScreen.main.brightness)
+        let brightnessPercentValue = brightnessFloatValue * 100
+//        print(brightnessFloatValue)
+        brightnessTextLabel.text = "Brightness level: " + String(brightnessPercentValue) + "%"
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    @IBAction func checkAmbientLightSensorButton(_ sender: UIButton) {
-        let brightnessCGFloatValue = UIScreen.main.brightness
-        let brightnessFloatValue = Float(brightnessCGFloatValue)
-        let brightnessStringValue = String(brightnessFloatValue)
-        textView.text.append(String("\n" + brightnessStringValue))
-    }
-
 }
