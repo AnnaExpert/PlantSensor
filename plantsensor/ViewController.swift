@@ -38,18 +38,18 @@ class ViewController: UIViewController {
         NotificationCenter.default.post(name: Notification.Name.UIScreenBrightnessDidChange, object: nil)
         let brightnessFloatValue = Float(UIScreen.main.brightness)
         let brightnessPercentValue = brightnessFloatValue * 100
-        brightnessManualTextLabel.text = String(format: "%.1f %", brightnessPercentValue)
+        brightnessManualTextLabel.text = String(format: "%.1f" + " %", brightnessPercentValue)
 
     }
     
     @IBAction func setMaxBrightnessButton(_ sender: UIButton) {
         UIScreen.main.brightness = CGFloat(1)
-        brightnessManualTextLabel.text = "Brightness level: MAX"
+        brightnessTextLabel.text = "Brightness level: Maximum"
     }
     
     @IBAction func setMinBrightnessButton(_ sender: UIButton) {
         UIScreen.main.brightness = CGFloat(0)
-        brightnessManualTextLabel.text = "Brightness level: MIN"
+        brightnessTextLabel.text = "Brightness level: Minimum"
     }
 }
 
