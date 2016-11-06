@@ -51,19 +51,28 @@ class ViewController: UIViewController {
     
     @IBAction func setMaxBrightnessButton(_ sender: UIButton) {
         UIScreen.main.brightness = CGFloat(1)
-//        brightnessTextLabel.text = "Brightness level: Maximum"
-        NotificationCenter.default.post(name: Notification.Name.UIScreenBrightnessDidChange, object: nil)
+        brightnessTextLabel.text = "Brightness level: Maximum"
+        let delayInSeconds = 2.0
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delayInSeconds) {
+            NotificationCenter.default.post(name: Notification.Name.UIScreenBrightnessDidChange, object: nil)
+        }
     }
     
     @IBAction func setAvgBrightnessButton(_ sender: UIButton) {
         UIScreen.main.brightness = CGFloat(0.5)
-//        brightnessTextLabel.text = "Brightness level: Average"
-        NotificationCenter.default.post(name: Notification.Name.UIScreenBrightnessDidChange, object: nil)
+        brightnessTextLabel.text = "Brightness level: Average"
+        let delayInSeconds = 2.0
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delayInSeconds) {
+            NotificationCenter.default.post(name: Notification.Name.UIScreenBrightnessDidChange, object: nil)
+        }
     }
     
     @IBAction func setMinBrightnessButton(_ sender: UIButton) {
         UIScreen.main.brightness = CGFloat(0)
-//        brightnessTextLabel.text = "Brightness level: Minimum"
-        NotificationCenter.default.post(name: Notification.Name.UIScreenBrightnessDidChange, object: nil)
+        brightnessTextLabel.text = "Brightness level: Minimum"
+        let delayInSeconds = 2.0
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delayInSeconds) {
+            NotificationCenter.default.post(name: Notification.Name.UIScreenBrightnessDidChange, object: nil)
+        }
     }
 }

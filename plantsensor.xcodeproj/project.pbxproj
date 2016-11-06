@@ -293,7 +293,7 @@
 				2A0266A01DCCD1B2007D263F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		2A0266A11DCCD1B2007D263F /* Build configuration list for PBXNativeTarget "plantsensor" */ = {
 			isa = XCConfigurationList;
@@ -302,7 +302,7 @@
 				2A0266A31DCCD1B2007D263F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};
