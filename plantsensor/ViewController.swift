@@ -44,6 +44,7 @@ class ViewController: UIViewController {
         let brightnessFloatValue = Float(UIScreen.main.brightness)
         let brightnessPercentValue = brightnessFloatValue * 100
         brightnessManualTextLabel.text = String(format: "%.1f", brightnessPercentValue) + "%"
+        brightnessManualTextLabel.isEnabled = true
     }
     
     @IBAction func setMaxBrightnessButton(_ sender: UIButton) {
