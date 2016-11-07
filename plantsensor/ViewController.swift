@@ -14,6 +14,7 @@ import ImageIO
 class ViewController: UIViewController {
     
     @IBOutlet weak var brightnessTextLabel: UILabel!
+    @IBOutlet weak var brightnessHiddenTextLabel: UILabel!
     @IBOutlet weak var brightnessManualTextLabel: UILabel!
     @IBOutlet weak var loadActivityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var brightnessProgressView: UIProgressView!
@@ -31,10 +32,10 @@ class ViewController: UIViewController {
     
     func UIScreenBrightnessDidChange(notification: NSNotification) {
         self.loadActivityIndicator.stopAnimating()
-        brightnessProgressView.isHidden = false
         let brightnessFloatValue = Float(UIScreen.main.brightness)
         let brightnessPercentValue = brightnessFloatValue * 100
-        brightnessTextLabel.text = String(format: "Brightness level: %.1f", brightnessPercentValue) + "%"
+        self.brightnessHiddenTextLabel.isHidden = true
+        brightnessTextLabel.text = String(format: "Brightness level is %.1f", brightnessPercentValue) + "%"
         brightnessProgressView.progress = brightnessFloatValue
     }
 
@@ -49,29 +50,17 @@ class ViewController: UIViewController {
         brightnessManualTextLabel.isHidden = false
     }
     
-    @IBAction func setMaxBrightnessButton(_ sender: UIButton) {
-        UIScreen.main.brightness = CGFloat(1)
-        brightnessTextLabel.text = "Brightness level: Maximum"
-        let delayInSeconds = 2.0
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delayInSeconds) {
-            NotificationCenter.default.post(name: Notification.Name.UIScreenBrightnessDidChange, object: nil)
-        }
-    }
-    
-    @IBAction func setAvgBrightnessButton(_ sender: UIButton) {
-        UIScreen.main.brightness = CGFloat(0.5)
-        brightnessTextLabel.text = "Brightness level: Average"
-        let delayInSeconds = 2.0
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delayInSeconds) {
-            NotificationCenter.default.post(name: Notification.Name.UIScreenBrightnessDidChange, object: nil)
-        }
-    }
-    
-    @IBAction func setMinBrightnessButton(_ sender: UIButton) {
+    @IBAction func setMinBrightnessButton(_ sender: UIButton!) {
         UIScreen.main.brightness = CGFloat(0)
-        brightnessTextLabel.text = "Calibration of light sensor..."
-        let delayInSeconds = 2.0
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delayInSeconds) {
+        brightnessTextLabel.text = "Calibrating sensor..."
+        loadActivityIndicator.startAnimating()
+        let delayInSecondsTwo = 2.0
+        let delayInSecondsFour = 4.0
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delayInSecondsTwo) {
+            self.brightnessTextLabel.text = "Checking brightness..."
+            self.brightnessHiddenTextLabel.isHidden = false
+        }
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delayInSecondsFour) {
             NotificationCenter.default.post(name: Notification.Name.UIScreenBrightnessDidChange, object: nil)
         }
     }
