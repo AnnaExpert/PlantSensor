@@ -69,7 +69,7 @@ class ViewController: UIViewController {
     
     @IBAction func setMinBrightnessButton(_ sender: UIButton) {
         UIScreen.main.brightness = CGFloat(0)
-        brightnessTextLabel.text = "Brightness level: Minimum"
+        brightnessTextLabel.text = "Calibration of light sensor..."
         let delayInSeconds = 2.0
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delayInSeconds) {
             NotificationCenter.default.post(name: Notification.Name.UIScreenBrightnessDidChange, object: nil)

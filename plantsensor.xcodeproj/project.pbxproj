@@ -12,6 +12,7 @@
 		2A0266981DCCD1B2007D263F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A0266961DCCD1B2007D263F /* Main.storyboard */; };
 		2A02669A1DCCD1B2007D263F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A0266991DCCD1B2007D263F /* Assets.xcassets */; };
 		2A02669D1DCCD1B2007D263F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A02669B1DCCD1B2007D263F /* LaunchScreen.storyboard */; };
+		2AB194AD1DD0C0F100676B80 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2AB194AC1DD0C0F100676B80 /* Settings.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		2A0266991DCCD1B2007D263F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2A02669C1DCCD1B2007D263F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2A02669E1DCCD1B2007D263F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2AB194AC1DD0C0F100676B80 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +40,7 @@
 		2A0266861DCCD1B2007D263F = {
 			isa = PBXGroup;
 			children = (
+				2AB194AC1DD0C0F100676B80 /* Settings.bundle */,
 				2A0266911DCCD1B2007D263F /* plantsensor */,
 				2A0266901DCCD1B2007D263F /* Products */,
 			);
@@ -124,6 +127,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2AB194AD1DD0C0F100676B80 /* Settings.bundle in Resources */,
 				2A02669D1DCCD1B2007D263F /* LaunchScreen.storyboard in Resources */,
 				2A02669A1DCCD1B2007D263F /* Assets.xcassets in Resources */,
 				2A0266981DCCD1B2007D263F /* Main.storyboard in Resources */,
@@ -293,7 +297,7 @@
 				2A0266A01DCCD1B2007D263F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
+			defaultConfigurationName = Release;
 		};
 		2A0266A11DCCD1B2007D263F /* Build configuration list for PBXNativeTarget "plantsensor" */ = {
 			isa = XCConfigurationList;
@@ -302,7 +306,7 @@
 				2A0266A31DCCD1B2007D263F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
