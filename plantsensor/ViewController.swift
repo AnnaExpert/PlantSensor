@@ -9,7 +9,6 @@
 import UIKit
 import Foundation
 import NotificationCenter
-import ImageIO
 
 class ViewController: UIViewController {
     
