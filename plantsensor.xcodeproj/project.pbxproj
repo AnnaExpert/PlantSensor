@@ -40,8 +40,8 @@
 		2A0266861DCCD1B2007D263F = {
 			isa = PBXGroup;
 			children = (
-				2AB194AC1DD0C0F100676B80 /* Settings.bundle */,
 				2A0266911DCCD1B2007D263F /* plantsensor */,
+				2AB194AC1DD0C0F100676B80 /* Settings.bundle */,
 				2A0266901DCCD1B2007D263F /* Products */,
 			);
 			sourceTree = "<group>";
